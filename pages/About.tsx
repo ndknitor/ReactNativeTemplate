@@ -1,14 +1,12 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-interface Props
-{
+import Toast from 'react-native-toast-message';
 
-}
-function About(props:Props) {
+function About() {
     return (
         <View style={styles.container}>
-            <Text>Dit me may</Text>
+            <Text onPress={() => Toast.show({text1 : 'dit me may', text2 : 'con cac', autoHide : true })}>Dit me may</Text>
             <StatusBar style="auto" />
         </View>
     )
