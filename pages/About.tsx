@@ -6,7 +6,7 @@ import Toast from 'react-native-toast-message';
 function About() {
     return (
         <View style={styles.container}>
-            <Text onPress={() => Toast.show({text1 : 'cac', text2 : 'dit me may'}) }>Dit me may</Text>
+            <Text onPress={() => Toast.show({text1 : 'title', text2 : 'This is toast'}) }>About</Text>
             <StatusBar style="auto" />
         </View>
     )
