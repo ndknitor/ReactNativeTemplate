@@ -1,6 +1,6 @@
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { ScreenParams } from "../routers/ApplicationRouter";
+import {  ParamListBase, useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 export default function useAppNavigation() {
-    return useNavigation<NavigationProp<ScreenParams>>();
+    return useNavigation<StackNavigationProp<ParamListBase>>();
 }

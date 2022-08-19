@@ -4,10 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import useAppNavigation from '../hooks/useAppNavigation';
 
 function Index() {
-  const navigation = useAppNavigation();
+  const { navigate } = useAppNavigation();
   return (
     <View style={styles.container}>
-      <Text onPress={() => {navigation.navigate("About")}} >Open up App.tsx to start working on your app!</Text>
+      <Text onPress={() => { navigate("About") }} >Click here to navigate to about page</Text>
       <StatusBar style="auto" />
     </View>
   )

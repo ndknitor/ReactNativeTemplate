@@ -17,7 +17,7 @@ function ApplicationRouter() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='Index' options={{ title: "Home" }} component={Index} />
-        <Stack.Screen name='About' options={{ title: "Dit me may" }} component={About} />
+        <Stack.Screen name='About' options={{ title: "About" }} component={About} />
       </Stack.Navigator>
     </NavigationContainer>
   )
