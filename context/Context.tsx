@@ -1,4 +1,4 @@
-import React, { Dispatch,SetStateAction, useState } from "react"
+import { createContext, Dispatch,SetStateAction, useState } from "react"
 export class Store {
     authenticated: boolean = false;
     setAuthenticated: Dispatch<SetStateAction<boolean>> = () => { };
@@ -18,5 +18,5 @@ export const useProvider : () => Store  = () =>
         setRoles
     };
 }
-const Context = React.createContext<Store>(new Store());
+const Context = createContext<Store>(new Store());
 export default Context;
