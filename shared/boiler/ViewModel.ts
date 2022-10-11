@@ -1,7 +1,7 @@
 import { validate, ValidationError } from "class-validator";
 
 export default class ViewModel {
-    protected messages: ValidationError[] = [];
+    protected messages!: ValidationError[];
     private buildFormData = (formData :FormData, data: any, indexR :boolean,parentKey:string | undefined = undefined) =>
     {
         if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
@@ -20,7 +20,7 @@ export default class ViewModel {
             });
           } else {
             const value = data == null ? '' : data;
-            formData.append(parentKey as string, value);
+            formData.append(parentKey!, value);
           }
     }
     getMessage = (func: Function) => {
@@ -46,7 +46,6 @@ export default class ViewModel {
         return formData;
     }
 }
-
 
 function getPropertyName (propertyFunction: Function) {
     return /\.([^\.;]+);?\s*\}$/.exec(propertyFunction.toString())![1];

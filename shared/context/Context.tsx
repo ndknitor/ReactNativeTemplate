@@ -1,4 +1,4 @@
-import { createContext, Dispatch,SetStateAction, useState } from "react"
+import { createContext ,Dispatch, SetStateAction, useState } from "react"
 export class Store {
     authenticated: boolean = false;
     setAuthenticated: Dispatch<SetStateAction<boolean>> = () => { };
@@ -6,8 +6,7 @@ export class Store {
     roles: string[] = [];
     setRoles: Dispatch<SetStateAction<string[]>> = () => { };
 }
-export const useProvider : () => Store  = () =>
-{
+export const useProvider: () => Store = () => {
     const [authenticated, setAuthenticated] = useState(false);
     const [roles, setRoles] = useState<string[]>([]);
     return {
