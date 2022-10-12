@@ -1,6 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import appxios from '../shared/boiler/AxiosInterceptor';
+import { StyleSheet, Text, View } from 'react-native';
 import useNavigate from '../shared/hook/useNavigate';
 
 function Index() {
