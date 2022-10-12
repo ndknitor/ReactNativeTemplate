@@ -1,10 +1,10 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 
 function Footer() {
   return (
     <View>
-        This is footer
+      <Text>This is footer</Text>
     </View>
   )
 }

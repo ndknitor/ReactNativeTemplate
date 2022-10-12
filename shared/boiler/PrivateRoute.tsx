@@ -1,6 +1,6 @@
 import React, { Fragment, PropsWithChildren, useContext } from 'react';
-import { ScreenParams } from '../../routers/Routes';
-import { forbiddenRedirect, unauthenticatedRedirect } from '../../utils/redirect';
+import { View } from 'react-native';
+import { forbiddenRedirect, unauthenticatedRedirect } from '../../utils/Redirect';
 import Context from '../context/Context'
 import useNavigate from '../hook/useNavigate';
 interface Props extends PropsWithChildren<{}> {
@@ -26,9 +26,10 @@ function PrivateRoute(props: Props) {
     return (
         authenticated ?
             isInRole() ?
-                <Fragment>
+                <>
                     {props.children}
-                </Fragment> :
+                </>
+                :
                 () => replace(props.forbiddenRedirect || forbiddenRedirect)
             :
             () => replace(props.unauthenticatedRedirect || unauthenticatedRedirect)

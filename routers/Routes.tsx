@@ -1,16 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import React from 'react'
 import About from '../pages/About';
 import Index from '../pages/Index';
 
 const Stack = createNativeStackNavigator();
 
-export interface ScreenParams {
-  Index: undefined,
-  About: undefined
-}
 
 function ApplicationRouter() {
   return (
