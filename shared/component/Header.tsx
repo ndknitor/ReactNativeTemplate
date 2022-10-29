@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text } from 'react-native'
+import useNavigate from '../hook/useNavigate'
 
 function Header() {
+  const { navigate, canGoBack, addListener, goBack } = useNavigate();
+  const [state, setState] = useState(0);
+  addListener("state", (e) => {
+    setState(Math.random())
+  });
+  useEffect(() => {
+
+  }, [state]);
   return (
-    <View>
-      <Text>This is header</Text>
+    <View style={{ backgroundColor: "blue", paddingTop: 20, paddingBottom: 10, paddingLeft: 8 }}>
+      {
+        canGoBack() ?
+        <Text onPress={() => goBack() }>Go back</Text>
+        :
+        null
+      }
+      <Text onPress={() => { navigate("Unauthorized") }} style={{ fontSize: 24 }}>This is header</Text>
     </View>
   )
 }

@@ -1,20 +1,34 @@
-import { createContext ,Dispatch, SetStateAction, useState } from "react"
+import { NavigationContainerRef } from "@react-navigation/native";
+import { createContext, Dispatch, SetStateAction, useState } from "react"
 export class Store {
-    authenticated: boolean = false;
-    setAuthenticated: Dispatch<SetStateAction<boolean>> = () => { };
+    initLoading: boolean = false;
+    setInitLoading: Dispatch<SetStateAction<boolean>> = () => { };
 
+    authenticated: boolean = false;
     roles: string[] = [];
-    setRoles: Dispatch<SetStateAction<string[]>> = () => { };
+    setAuthorize: (scheme: string[] | boolean) => void = () => { };
 }
 export const useProvider: () => Store = () => {
-    const [authenticated, setAuthenticated] = useState(false);
+    const [initLoading, setInitLoading] = useState<boolean>(true);
+    const [authenticated, setAuthenticated] = useState<boolean>(false);
     const [roles, setRoles] = useState<string[]>([]);
+    const setAuthorize = (scheme: string[] | boolean) => {
+        if (!(typeof scheme == "boolean")) {
+            setAuthenticated(true);
+            setRoles(scheme);
+        }
+        else {
+            setAuthenticated(scheme);
+            setRoles([]);
+        }
+    }
     return {
-        authenticated,
-        setAuthenticated,
+        initLoading,
+        setInitLoading,
 
+        authenticated,
         roles,
-        setRoles
+        setAuthorize,
     };
 }
 const Context = createContext<Store>(new Store());
