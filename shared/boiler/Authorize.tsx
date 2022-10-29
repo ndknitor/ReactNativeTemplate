@@ -23,14 +23,16 @@ function Authorize(props: Props) {
         return false;
     }
     useEffect(() => {
-        if (!initLoading) {
-            if (!authenticated) {
-                replace(props.unauthenticatedRedirect || unauthenticatedRedirect);
-            }
-            if (!isInRole()) {
-                replace(props.forbiddenRedirect || forbiddenRedirect)
-            }
+        if (initLoading) {
+            return;
         }
+        if (!authenticated) {
+            replace(props.unauthenticatedRedirect || unauthenticatedRedirect);
+        }
+        if (!isInRole()) {
+            replace(props.forbiddenRedirect || forbiddenRedirect)
+        }
+
     }, [initLoading]);
     return (
         !initLoading ?
@@ -42,7 +44,7 @@ function Authorize(props: Props) {
                     :
                     null
                 :
-                null 
+                null
             :
             null
     )
