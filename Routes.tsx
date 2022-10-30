@@ -14,7 +14,6 @@ const Stack = createNativeStackNavigator();
 function Routers() {
   useInit();
   return (
-
     <NavigationContainer >
       <AxiosInterceptor>
         <Layout>
