@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useContext, useEffect, useLayoutEffect } from 'react';
+import React, { PropsWithChildren, useContext, useEffect } from 'react';
 import { forbiddenRedirect, unauthenticatedRedirect } from '../../utils/Redirect';
 import Context from '../context/Context'
 import useNavigate from '../hook/useNavigate';
@@ -28,9 +28,11 @@ function Authorize(props: Props) {
         }
         if (!authenticated) {
             replace(props.unauthenticatedRedirect || unauthenticatedRedirect);
+            return;
         }
         if (!isInRole()) {
             replace(props.forbiddenRedirect || forbiddenRedirect)
+            return;
         }
 
     }, [initLoading]);

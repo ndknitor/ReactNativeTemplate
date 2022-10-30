@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 const globalStyles = StyleSheet.create({
     input: {
-        width: 220,
+        width: 290,
         height: 40,
         borderBottomWidth: 1
     },

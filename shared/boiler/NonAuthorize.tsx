@@ -1,4 +1,4 @@
-import React, { Fragment, PropsWithChildren, useContext } from 'react'
+import React, { Fragment, PropsWithChildren, useContext, useEffect } from 'react'
 import { forbiddenRedirect } from '../../utils/Redirect';
 import Context from '../context/Context'
 import useNavigate from '../hook/useNavigate';
@@ -8,9 +8,14 @@ interface Props extends PropsWithChildren<{}> {
 function NonAuthorize(props: Props) {
     const { authenticated } = useContext(Context);
     const { replace } = useNavigate();
+    useEffect(() => { 
+        if (authenticated) {
+            replace(props.redirect || forbiddenRedirect);
+        }
+    }, []);
     return (
         authenticated ?
-            () => replace(props.redirect || forbiddenRedirect)
+            null
             :
             <Fragment>{props.children}</Fragment>
     )

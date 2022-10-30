@@ -1,16 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Toast from 'react-native-toast-message';
-import Authorize from '../shared/boiler/Authorize';
+import StandardResponse from '../objects/response/StandardResponse';
+import useNavigate from '../shared/hook/useNavigate';
 
 function About() {
+    const { getState } = useNavigate();
+    const [response, setResponse] = useState<StandardResponse>();
+    useEffect(() => {
+        const a = getState();
+        const response = a.routes[a.index].params as StandardResponse;
+        setResponse(response);
+    }, []);
+
     return (
-        <Authorize>
-            <View style={styles.container}>
-                <Text onPress={() => Toast.show({ text1: 'title', text2: 'This is toast' })}>About</Text>
-                <StatusBar style="auto" />
-            </View>
-        </Authorize>
+        <View style={styles.container}>
+            <Text onPress={() => Toast.show({ text1: 'title', text2: 'This is toast' })}>{response?.message}</Text>
+            <StatusBar style="auto" />
+        </View>
     )
 }
 
