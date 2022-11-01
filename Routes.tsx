@@ -8,7 +8,7 @@ import Render from './pages/Render';
 import Unauthorized from './pages/Unauthorized';
 import Layout from './shared/component/Layout';
 import useInit from './shared/context/hooks/useInit';
-AxiosInterceptor
+
 const Stack = createNativeStackNavigator();
 
 function Routers() {

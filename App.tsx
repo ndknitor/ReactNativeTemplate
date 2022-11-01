@@ -5,7 +5,7 @@ import Routers from "./Routes";
 export default function App() {
   return (
     <Provider>
-        <Routers />
+      <Routers />
       <Toast />
     </Provider>
   );

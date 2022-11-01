@@ -3,11 +3,11 @@ import { StyleSheet, Text, View, TextInput, Button, Touchable, TouchableWithoutF
 import SignInRequest from '../objects/request/SignInRequest';
 import useAuth from '../shared/context/hooks/useAuth';
 import useNavigate from '../shared/hook/useNavigate';
-import globalStyles from '../utils/GlobalStyles';
+import globalStyles from '../styles/Global';
 
 function Index() {
   const { navigate } = useNavigate();
-  const {authenticated, roles, setAuthorize} = useAuth();
+  const { authenticated, roles, setAuthorize } = useAuth();
   const [signInRequest] = useState(new SignInRequest());
   const [signInKey, setSignInKey] = useState(0);
   const emailInput = useRef<TextInput>(null);
@@ -28,19 +28,19 @@ function Index() {
     }
   }
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.page}>
       <Text onPress={() => { navigate("About", { message: "Dit me may" }) }}>Click here to navigate to about page</Text>
       <Text onPress={() => { navigate("Render", { message: "Dit me may" }) }}>Render</Text>
       <Text>Authenticated : {authenticated.toString()}</Text>
       <Text>Roles : {roles.toString()}</Text>
       <Button title="Authorize" onPress={() => setAuthorize(["User"])} />
-      <View style={{marginBottom : 10}}/>
+      <View style={{ marginBottom: 10 }} />
       <Button title="Unauthorize" onPress={() => setAuthorize(false)} />
       <View key={signInKey} style={styles.signInForm}>
-        <TextInput ref={emailInput} style={globalStyles.input} placeholder="Email" defaultValue={signInRequest.email} onChangeText={e => signInRequest.email = e}></TextInput>
-        <Text style={globalStyles.validation}>{signInRequest.getMessage(() => signInRequest.email)}</Text>
-        <TextInput ref={passwordInput} style={globalStyles.input} placeholder="Password" defaultValue={signInRequest.password} onChangeText={e => signInRequest.password = e} secureTextEntry></TextInput>
-        <Text style={globalStyles.validation}>{signInRequest.getMessages(() => signInRequest.password)}</Text>
+        <TextInput ref={emailInput} style={styles.input} placeholder="Email" defaultValue={signInRequest.email} onChangeText={e => signInRequest.email = e}></TextInput>
+        <Text style={styles.validation}>{signInRequest.getMessage(() => signInRequest.email)}</Text>
+        <TextInput ref={passwordInput} style={styles.input} placeholder="Password" defaultValue={signInRequest.password} onChangeText={e => signInRequest.password = e} secureTextEntry></TextInput>
+        <Text style={styles.validation}>{signInRequest.getMessages(() => signInRequest.password)}</Text>
         <Button title='Submit' onPress={e => signInSubmit()}></Button>
       </View>
     </View>
@@ -49,13 +49,16 @@ function Index() {
 
 export default Index
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   signInForm: {
     width: 300
+  },
+  input:
+  {
+    width: 290,
+    height: 40,
+    borderBottomWidth: 1
+  },
+  validation: {
+
   }
 });

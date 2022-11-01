@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Toast from 'react-native-toast-message';
 import StandardResponse from '../objects/response/StandardResponse';
 import useNavigate from '../shared/hook/useNavigate';
+import globalStyles from '../styles/Global';
 
 function About() {
     const { getState } = useNavigate();
@@ -15,7 +16,7 @@ function About() {
     }, []);
 
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.page}>
             <Text onPress={() => Toast.show({ text1: 'title', text2: 'This is toast' })}>{response?.message}</Text>
             <StatusBar style="auto" />
         </View>
@@ -23,12 +24,3 @@ function About() {
 }
 
 export default About
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
