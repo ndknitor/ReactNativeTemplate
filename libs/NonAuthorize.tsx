@@ -1,7 +1,7 @@
 import React, { Fragment, PropsWithChildren, useContext, useEffect } from 'react'
-import { forbiddenRedirect } from '../../utils/Redirect';
-import Context from '../context/Context'
-import useNavigate from '../hook/useNavigate';
+import { forbiddenRedirect } from '../utils/Redirect';
+import Context from '../shared/context/Context'
+import useNavigate from '../shared/hook/useNavigate';
 interface Props extends PropsWithChildren<{}> {
     redirect: string | undefined;
 }

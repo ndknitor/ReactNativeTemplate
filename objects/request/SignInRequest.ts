@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsEmail, MaxLength, MinLength, IsEmpty, } from "class-validator";
-import ViewModel from "../../shared/boiler/ViewModel";
+import ViewModel from "../../libs/ViewModel";
 
 export default class SignInRequest extends ViewModel {
     @IsEmail({}, { message: "Email not in right format" })

@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import useAuth from '../context/hooks/useAuth';
+import useAuth from '../shared/context/hooks/useAuth';
 function NonAuthorizeView(props:PropsWithChildren<{}>) {
     const {authenticated} = useAuth();
   return (

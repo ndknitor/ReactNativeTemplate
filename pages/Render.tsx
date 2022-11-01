@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import Authorize from '../shared/boiler/Authorize'
+import Authorize from '../libs/Authorize'
 import globalStyles from '../styles/Global'
 
 function Render() {
