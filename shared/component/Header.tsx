@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import { View, Text } from 'react-native'
-import useNavigate from '../hook/useNavigate'
+import useRouter from '../hook/useRouter';
 
 function Header() {
-  const { navigate, canGoBack, addListener, goBack } = useNavigate();
+  const { navigate, canGoBack, addListener, goBack } = useRouter();
   const [state, setState] = useState(0);
   addListener("state", (e) => {
     setState(Math.random())

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useContext, useEffect } from 'react';
 import { forbiddenRedirect, unauthenticatedRedirect } from '../utils/Redirect';
 import Context from '../shared/context/Context'
-import useNavigate from '../shared/hook/useNavigate';
+import useRouter  from '../shared/hook/useRouter';
 interface Props extends PropsWithChildren<{}> {
     roles?: string[];
     unauthenticatedRedirect?: string;
@@ -9,7 +9,7 @@ interface Props extends PropsWithChildren<{}> {
 }
 function Authorize(props: Props) {
     const { authenticated, roles, initLoading } = useContext(Context);
-    const { replace } = useNavigate();
+    const { replace } = useRouter();
     const isInRole = () => {
         if (!props.roles) {
             return true;

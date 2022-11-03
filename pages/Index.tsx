@@ -2,11 +2,11 @@ import React, { useRef, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Touchable, TouchableWithoutFeedback } from 'react-native';
 import SignInRequest from '../objects/request/SignInRequest';
 import useAuth from '../shared/context/hooks/useAuth';
-import useNavigate from '../shared/hook/useNavigate';
+import useRouter from '../shared/hook/useRouter';
 import globalStyles from '../styles/Global';
 
 function Index() {
-  const { navigate } = useNavigate();
+  const { navigate } = useRouter();
   const { authenticated, roles, setAuthorize } = useAuth();
   const [signInRequest] = useState(new SignInRequest());
   const [signInKey, setSignInKey] = useState(0);
