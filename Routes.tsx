@@ -7,12 +7,10 @@ import Index from './pages/Index';
 import Render from './pages/Render';
 import Unauthorized from './pages/Unauthorized';
 import Layout from './shared/component/Layout';
-import useInit from './shared/context/hooks/useInit';
 
 const Stack = createNativeStackNavigator();
 
 function Routers() {
-  useInit();
   return (
     <NavigationContainer >
       <AxiosInterceptor>

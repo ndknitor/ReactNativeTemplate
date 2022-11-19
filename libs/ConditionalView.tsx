@@ -1,9 +1,8 @@
-import { PropsWithChildren } from 'react'
-interface Props extends PropsWithChildren<{}>
-{
-    condition:boolean;
+import  { PropsWithChildren } from 'react'
+interface Props extends PropsWithChildren<{}> {
+  condition: boolean;
 }
-function ConditionalView(props:Props) {
+function ConditionalView(props: Props) {
   return (
     props.condition ? props.children : null
   )

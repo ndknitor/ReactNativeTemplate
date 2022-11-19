@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Touchable, TouchableWithoutFeedback } from 'react-native';
 import SignInRequest from '../objects/request/SignInRequest';
-import useAuth from '../shared/context/hooks/useAuth';
-import useRouter from '../shared/hook/useRouter';
+import useRouter from '../libs/hook/useRouter';
 import globalStyles from '../styles/Global';
+import useAuth from '../libs/hook/useAuth';
+import Context from '../shared/context/Context';
 
 function Index() {
   const { navigate } = useRouter();
@@ -12,6 +13,7 @@ function Index() {
   const [signInKey, setSignInKey] = useState(0);
   const emailInput = useRef<TextInput>(null);
   const passwordInput = useRef<TextInput>(null);
+  const { count, setCount } = useContext(Context);
   const signInSubmit = async () => {
     if (!(await signInRequest.check(setSignInKey))) {
       if (signInRequest.getMessage(() => signInRequest.email)) {
@@ -42,6 +44,9 @@ function Index() {
         <TextInput ref={passwordInput} style={styles.input} placeholder="Password" defaultValue={signInRequest.password} onChangeText={e => signInRequest.password = e} secureTextEntry></TextInput>
         <Text style={styles.validation}>{signInRequest.getMessages(() => signInRequest.password)}</Text>
         <Button title='Submit' onPress={e => signInSubmit()}></Button>
+        <Button onPress={() => setCount(count + 1)} title='Increment' />
+        <Button onPress={() => setCount(count - 1)} title='Drecrement' />
+        <Text>Count : {count}</Text>
       </View>
     </View>
   )

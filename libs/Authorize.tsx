@@ -1,15 +1,15 @@
-import React, { PropsWithChildren, useContext, useEffect } from 'react';
+import React, { PropsWithChildren, useContext, useEffect } from 'react'
 import { forbiddenRedirect, unauthenticatedRedirect } from '../utils/Redirect';
-import Context from '../shared/context/Context'
-import useRouter  from '../shared/hook/useRouter';
-interface Props extends PropsWithChildren<{}> {
+import { AuthorizeContext } from './AuthorizeProvider';
+import useRouter from './hook/useRouter';
+interface Props extends PropsWithChildren {
     roles?: string[];
     unauthenticatedRedirect?: string;
     forbiddenRedirect?: string;
 }
 function Authorize(props: Props) {
-    const { authenticated, roles, initLoading } = useContext(Context);
     const { replace } = useRouter();
+    const { authenticated, roles, initLoading } = useContext(AuthorizeContext);
     const isInRole = () => {
         if (!props.roles) {
             return true;
@@ -31,18 +31,15 @@ function Authorize(props: Props) {
             return;
         }
         if (!isInRole()) {
-            replace(props.forbiddenRedirect || forbiddenRedirect)
+            replace(props.forbiddenRedirect || forbiddenRedirect);
             return;
         }
-
-    }, [initLoading]);
+    }, [initLoading])
     return (
         !initLoading ?
             authenticated ?
                 isInRole() ?
-                    <>
-                        {props.children}
-                    </>
+                    <>{props.children}</>
                     :
                     null
                 :

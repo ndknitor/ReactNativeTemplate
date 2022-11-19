@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { View, Text } from 'react-native'
-import useRouter from '../hook/useRouter';
+import useRouter from '../../libs/hook/useRouter';
 
 function Header() {
   const { navigate, canGoBack, addListener, goBack } = useRouter();

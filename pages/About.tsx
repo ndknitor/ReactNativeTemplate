@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Toast from 'react-native-toast-message';
 import StandardResponse from '../objects/response/StandardResponse';
-import useRouter from '../shared/hook/useRouter';
+import useRouter from '../libs/hook/useRouter';
 import globalStyles from '../styles/Global';
 
 function About() {
