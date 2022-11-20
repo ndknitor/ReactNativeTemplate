@@ -30,13 +30,15 @@ export default class ViewModel {
         if (!this.messages) {
             return ''
         }
+        console.log(getPropertyName(func));
+        
         const messageObj = this.messages.find(o => o.property == getPropertyName(func));
         if (messageObj && messageObj.constraints) {
             const messageKeys = Object.values(Object.keys(messageObj.constraints));
             if (messageKeys.length > 0) {
                 return messageObj.constraints[messageKeys[0]];
             }
-        }
+        }        
         return '';
     }
     getMessages = (func: Function) => {
@@ -49,7 +51,7 @@ export default class ViewModel {
             const messageKeys = Object.values(Object.keys(messageObj.constraints!));
             if (messageKeys.length > 0) {
                 for (let i = 0; i < messageKeys.length; i++) {
-                    const element = messageKeys[i];
+                    const element = messageKeys[i];                    
                     result.push(messageObj.constraints![element]);
                 }
                 return result;
@@ -59,6 +61,7 @@ export default class ViewModel {
     }
     check = async (action?: Dispatch<SetStateAction<number>>) => {
         this.messages = await validate(this);
+
         if (action) {
             action(Math.random());    
         }
@@ -71,6 +74,5 @@ export default class ViewModel {
     }
 }
 function getPropertyName(propertyFunction: Function) {
-    const s = propertyFunction.toString().split(".");
-    return s[s.length -1];
+    return /\.([^\.;]+);?\s*\}$/.exec(propertyFunction.toString())![1];
 }

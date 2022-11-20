@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsEmail, MaxLength, MinLength,  } from "class-validator";
+import { IsNotEmpty, IsEmail, MaxLength, MinLength} from "class-validator";
 import ViewModel from "../../libs/ViewModel";
 
 export default class SignInRequest extends ViewModel {

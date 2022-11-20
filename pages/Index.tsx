@@ -15,7 +15,7 @@ function Index() {
   const passwordInput = useRef<TextInput>(null);
   const { count, setCount } = useContext(Context);
   const signInSubmit = async () => {
-    if (!(await signInRequest.check(setSignInKey))) {
+    if (!(await signInRequest.check(setSignInKey))) {      
       if (signInRequest.getMessage(() => signInRequest.email)) {
         emailInput.current?.focus();
         return;
@@ -42,7 +42,7 @@ function Index() {
         <TextInput ref={emailInput} style={styles.input} placeholder="Email" defaultValue={signInRequest.email} onChangeText={e => signInRequest.email = e}></TextInput>
         <Text style={styles.validation}>{signInRequest.getMessage(() => signInRequest.email)}</Text>
         <TextInput ref={passwordInput} style={styles.input} placeholder="Password" defaultValue={signInRequest.password} onChangeText={e => signInRequest.password = e} secureTextEntry></TextInput>
-        <Text style={styles.validation}>{signInRequest.getMessages(() => signInRequest.password)}</Text>
+        <Text style={styles.validation}>{signInRequest.getMessage(() => signInRequest.password)}</Text>
         <Button title='Submit' onPress={e => signInSubmit()}></Button>
         <Button onPress={() => setCount(count + 1)} title='Increment' />
         <Button onPress={() => setCount(count - 1)} title='Drecrement' />
